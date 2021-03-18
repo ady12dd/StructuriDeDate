@@ -68,6 +68,21 @@ void traversare(nodStiva* stiva) {
 	
 }
 
+//conversie din lista in vector
+//utilizare : salvarea datelor din structura in alta structura pt accesul direct la date
+//eficientizarea operatiilor 
+//prelucare mai usoara
+
+void conversieStivaVector(nodStiva** varf, carte* vect,int* nr)//n - control sau indice
+{
+	carte val;
+	while (pop(varf, &val)==0) {
+		
+		vect[*nr] = val;
+		(*nr)++;
+	}
+}
+
 void main() {
 	nodStiva* varf = nullptr;
 	int n;//nr de carti
@@ -93,5 +108,21 @@ void main() {
 	traversare(varf);
 	//dezalocare
 	carte val;
-	while (pop(&varf, &val) == 0);
+	//while (pop(&varf, &val) == 0);
+
+	
+	carte* vector=new carte[n];
+	int nr = 0;
+	conversieStivaVector(&varf, vector, &nr);//nr l-am dar prin parametru pointer ca sa putem modifica direct pe el, variabila locala ca parametru intr-o functie
+											 //acelasi lucru si cu stiva, data prin parametru ca sa modificam direct pe ea
+	cout << "----------------------Afisare vector:-----------------------------" << endl;
+	for (int i = 0; i < nr; i++) {
+		cout << "Cartea cu codul : " << vector[i].cod << " are titlul " << vector[i].titlu << " si pretul de " << vector[i].pret << " lei" << endl;
+	}
+
+	
+	for (int i = 0; i < nr; i++) {
+		delete[]vector[i].titlu;
+	}
+	delete[]vector;
 }
