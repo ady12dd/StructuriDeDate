@@ -34,6 +34,7 @@ nodStiva* push(nodStiva* varf, carte c) {//varf echivalent cu cap //inserare la 
 		varf = nou;//ultimul nod inserat in strucutra
 	}
 	return varf;
+	
 }
 
 
