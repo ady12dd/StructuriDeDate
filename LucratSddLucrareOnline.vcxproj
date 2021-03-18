@@ -154,7 +154,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Matrice de structuri-fisier.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Stiva.cpp" />
     <ClCompile Include="UtilizareClaseCitireScriere.cpp" />
   </ItemGroup>
   <ItemGroup>
