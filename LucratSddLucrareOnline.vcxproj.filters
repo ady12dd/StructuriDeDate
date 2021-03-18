@@ -39,7 +39,10 @@
     <ClCompile Include="listaCircularaCuConversieSiCautare.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Stiva.cpp">
+    <ClCompile Include="StivaID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="coadaID.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
