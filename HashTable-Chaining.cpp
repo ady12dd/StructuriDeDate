@@ -100,4 +100,30 @@ void dezalocareHastT(hashT tabela) {
 
 void main() {
 
+	hashT tabela;
+	tabela.size = 101;
+	tabela.vect = new nodLS*[tabela.size];
+	for (int i = 0; i < tabela.size; i++) {
+		tabela.vect[i] = nullptr;
+	}
+
+	int n;
+	cout << "Introduceti numarul de student: ";
+	cin >> n;
+	student s;
+	char buffer[20];//pt nume student
+	for (int i = 0; i < n; i++) {
+		cout << "Dati codul studentului: ";
+		cin >> s.cod;
+		cout << "dati numele studentului: ";
+		cin >> buffer;
+		s.nume = new char[strlen(buffer) + 1];
+		strcpy(s.nume, buffer);
+		cout << "Dati media studentului:";
+		cin >> s.medie;
+		inserare(tabela, s);
+	}
+
+	traversareHashTable(tabela);
+	dezalocareHastT(tabela);
 }
