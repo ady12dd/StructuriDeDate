@@ -29,11 +29,15 @@ int functieHash(int cheie, hashT tabela) {
 
 }
 
+int funsctieHash2(char cheie[20], hashT tabela) {
+	return cheie[0] % tabela.size;
+}
+
 int inserare(hashT tabela, student s) {
 	//primim tabela pe care lucram (ca la lista simpla cand primeam capul0 si informatia utila(studentul)
 	int pozitie;
 	if (tabela.vect != nullptr) {
-		pozitie = functieHash(s.cod, tabela);
+		pozitie = funsctieHash2(s.nume, tabela);
 		//acum e partea de la lista ( inserarea in lista simpla)
 		nodLS* nou = new nodLS;
 		nou->inf.cod = s.cod;
@@ -67,8 +71,10 @@ void traversareHashTable(hashT tabela) {
 				cout << "Pozitie " << i << endl;
 				//pot face o fucntie separata sau traversam aici
 				nodLS* temp = tabela.vect[i];
+				int contor = 1;
 				while (temp) {
-					cout << "Cod: " << temp->inf.cod << " cu numele: " << temp->inf.nume << " cu media: " << temp->inf.medie<<endl;
+					cout << contor<<"."<<" Cod: " << temp->inf.cod << " cu numele: " << temp->inf.nume << " cu media: " << temp->inf.medie<<endl;
+					contor++;
 					temp = temp->next;
 				}
 			}
@@ -98,6 +104,66 @@ void dezalocareHastT(hashT tabela) {
 	}
 }
 
+//stergerea este o combinatie de inserare si dezalocare
+
+void stergeNod(nodLS* nod) {
+	
+	delete[] nod->inf.nume;
+	delete nod;
+}
+
+int stergere(hashT tabela, char nume[20])
+{
+	int pozitie;
+	if (tabela.vect != NULL)
+	{
+		pozitie = funsctieHash2(nume, tabela);
+		if (tabela.vect[pozitie] == NULL)
+			return -1;
+		else
+		{
+			if (strcmp(tabela.vect[pozitie]->inf.nume, nume)!=0)
+			{
+				if (tabela.vect[pozitie]->next == NULL)
+				{
+					//nodLS* temp = tabela.vect[pozitie];
+					stergeNod(tabela.vect[pozitie]);
+					tabela.vect[pozitie] = NULL;
+				}
+				else
+				{
+					nodLS* temp = tabela.vect[pozitie];
+					tabela.vect[pozitie] = temp->next;
+					free(temp->inf.nume);
+					free(temp);
+				}
+			}
+			else
+			{
+				nodLS* temp = tabela.vect[pozitie];
+				while (temp->next != NULL && strcmp(temp->next->inf.nume, nume)!=0)
+					temp = temp->next;
+					nodLS* p = temp->next;
+				if (p->next != NULL)
+				{
+					temp->next = p->next;
+					free(p->inf.nume);
+					free(p);
+				}
+				else
+				{
+					temp->next = NULL;
+					free(p->inf.nume);
+					free(p);
+				}
+			}
+		}
+	}
+	return pozitie;
+}
+
+
+
 void main() {
 
 	hashT tabela;
@@ -116,14 +182,21 @@ void main() {
 		cout << "Dati codul studentului: ";
 		cin >> s.cod;
 		cout << "dati numele studentului: ";
-		cin >> buffer;
+		cin>>buffer;
 		s.nume = new char[strlen(buffer) + 1];
 		strcpy(s.nume, buffer);
 		cout << "Dati media studentului:";
 		cin >> s.medie;
 		inserare(tabela, s);
 	}
-
+	char buffer2[20];
+	cout << "Nume de sters: " << endl;
+	cin >> buffer2;
+	cout << "---------------------Afisare tabela inainte de stergere----------------------" << endl<<endl;
 	traversareHashTable(tabela);
+	stergere(tabela, buffer2);
+	cout << "---------------------Afisare tabela dupa stergere--------------------------- " << endl<<endl;
+	traversareHashTable(tabela);
+	
 	dezalocareHastT(tabela);
 }
