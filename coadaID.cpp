@@ -11,6 +11,12 @@ struct masina
 	float pret;
 };
 
+struct nodStiva
+{
+	masina inf;
+	nodStiva* next;
+};
+
 struct nodCoada
 {
 	masina inf;
@@ -61,6 +67,61 @@ void traversare(nodCoada* prim) {
 		temp = temp->next;
 	}
 }
+
+void traversareStiva(nodStiva* varf) {
+	nodStiva* temp = varf;
+	while (temp) {
+		cout << "Masina cu codul : " << temp->inf.cod << " are marca " << temp->inf.marca << " si pretul de " << temp->inf.pret << " lei" << endl;
+		temp = temp->next;
+	}
+}
+
+int pop(nodStiva** varf, masina* val) {// pentru a actualiza varful(stiva) il dam pointer, val vreau sa returnez cartea pe care o scot
+	if (*varf == nullptr) {
+		return -1;// inseamna ca nu avem ce extrage
+	}
+	else {
+		//deep copy informatie utila
+		(*val).cod = (*varf)->inf.cod;
+		(*val).marca = new char[strlen((*varf)->inf.marca) + 1];
+		strcpy(val->marca, (*varf)->inf.marca);
+		val->pret = (*varf)->inf.pret;
+		//dezalocare nod stiva, curent
+		nodStiva* temp = *varf;// pastrez adresa varfului curent
+		*varf = (*varf)->next;
+		delete[]temp->inf.marca;
+		delete temp;
+		return 0;// s-a extras cu succes
+	}
+}
+
+nodStiva* push(nodStiva* varf, masina c) {//varf echivalent cu cap //INSERARE LA INCEPUT INTR_O LISTA SIMPLA
+	//initializare nod nou care trebuie introdus in stiva
+	nodStiva* nou = new nodStiva;
+	nou->inf.cod = c.cod;
+	nou->inf.pret = c.pret;
+	nou->inf.marca = new char[strlen(c.marca) + 1];
+	strcpy(nou->inf.marca, c.marca);
+	nou->next = nullptr;
+	if (varf == nullptr) {
+		varf = nou;
+	}
+	else {
+
+		nou->next = varf;
+		varf = nou;//ultimul nod inserat in strucutra
+	}
+	return varf;
+
+}
+
+void ConversieCoadaStiva(nodCoada** prim, nodCoada** ultim, nodStiva** varf) {
+	masina val;
+	while (get(prim, ultim, &val) == 0) {
+		*varf=push(*varf, val);
+	}
+}
+
 void main()
 {
 	int n;
@@ -69,7 +130,7 @@ void main()
 	nodCoada* prim = nullptr, * ultim = nullptr;
 	char buffer[30];
 	masina m;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) { 
 		cout << "Cod =" << endl;
 		cin >> m.cod;
 		cout << "Marca: " << endl;
@@ -81,9 +142,17 @@ void main()
 		put(&prim, &ultim, m);
 		delete[]m.marca;
 	}
-
+	cout << "---------------Coada----------------" << endl;
 	traversare(prim);
-	while (get(&prim, &ultim, &m) == 0) {
+	masina val;
+	/*while (get(&prim, &ultim, &m) == 0) {
 		delete[]m.marca;
+	}*/
+	cout << "---------------Stiva----------------" << endl;
+	nodStiva* varf = nullptr;
+	ConversieCoadaStiva(&prim, &ultim, &varf);
+	traversareStiva(varf);
+	while (pop(&varf, &val) == 0) {
+		delete[]val.marca;
 	}
 }
