@@ -1,0 +1,4 @@
+Masina cu codul : 456 are marca 
+Audi si pretul de 500 lei
+Masina cu codul : 123 are marca 
+Bmw si pretul de 4500 lei

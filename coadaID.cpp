@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<stdio.h>
+#include<fstream>
 
 using namespace std;
 
@@ -69,11 +70,15 @@ void traversare(nodCoada* prim) {
 }
 
 void traversareStiva(nodStiva* varf) {
+	ofstream f;
+	f.open("out.txt");
 	nodStiva* temp = varf;
 	while (temp) {
-		cout << "Masina cu codul : " << temp->inf.cod << " are marca " << temp->inf.marca << " si pretul de " << temp->inf.pret << " lei" << endl;
+		f << "Masina cu codul : " << temp->inf.cod << " are marca " << temp->inf.marca << " si pretul de " << temp->inf.pret << " lei" << endl;
 		temp = temp->next;
 	}
+
+	f.close();
 }
 
 int pop(nodStiva** varf, masina* val) {// pentru a actualiza varful(stiva) il dam pointer, val vreau sa returnez cartea pe care o scot
@@ -121,6 +126,8 @@ void ConversieCoadaStiva(nodCoada** prim, nodCoada** ultim, nodStiva** varf) {
 		*varf=push(*varf, val);
 	}
 }
+
+
 
 void main()
 {
