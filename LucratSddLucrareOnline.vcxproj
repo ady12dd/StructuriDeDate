@@ -143,6 +143,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Date,vectori,matrici,pointeri.cpp" />
+    <ClCompile Include="HashTable-Chaining.cpp" />
     <ClCompile Include="listaCircularaCuConversieSiCautare.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
