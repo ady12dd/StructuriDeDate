@@ -1,0 +1,6 @@
+5
+55 apa 2.5
+33 paine 3.5
+44 lapte 6.5
+66 zahar 7.5
+77 faina 4.5
