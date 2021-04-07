@@ -151,11 +151,12 @@
     <ClCompile Include="HashTable-Chaining.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="HEAP.cpp" />
     <ClCompile Include="listaCircularaCuConversieSiCautare.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ListaSimpla.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="listaSimplaCorect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -181,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="fisier.txt" />
+    <Text Include="fisier2.txt" />
     <Text Include="Text.txt" />
     <Text Include="Text1.txt" />
   </ItemGroup>
