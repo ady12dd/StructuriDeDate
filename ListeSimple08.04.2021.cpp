@@ -94,13 +94,18 @@ void dezalocare(nod* lista) {
 	delete lista;
 }
 
-nod* stergereNod(nod** lista, char* producator) {
+nod* stergereNod(nod** lista,const char* producator) {
 	nod* temp = *lista;
-	while (temp) {
-		if (strcmp(temp->avion.producator, producator) == 0) {
-			
+	while (temp->next) {
+			if (strcmp(temp->next->avion.producator, producator) == 0) {
+			nod* temp2 = temp->next;
+			temp->next = temp->next->next;
+			delete[]temp2->avion.producator;
+			delete temp2;
 		}
+		temp = temp->next;
 	}
+	return *lista;
 }
 
 Avion* conversieListaVector(nod* lista, int* nrElemente) {
@@ -125,9 +130,9 @@ void main() {
 	ifstream f;
 	f.open("avioane.txt");
 	char buffer[30];
-	int nrElementeListta;
-	f >> nrElementeListta;
-	for (int i = 0; i < nrElementeListta; i++) {
+	int nrElementeLista;
+	f >> nrElementeLista;
+	for (int i = 0; i < nrElementeLista; i++) {
 		Avion avion;
 		f >> buffer;
 		avion.producator = new char[strlen(buffer) + 1];
@@ -140,11 +145,16 @@ void main() {
 	}
 
 	traversareLista(lista);
+
+	cout << "-----------------AFISARE LISTA STERGERE-----------------------" << endl;
+	lista = stergereNod(&lista, "BMW");
+	nrElementeLista--;
+	traversareLista(lista);
 	cout << "-----------------------------------------------AFISARE VECTOR DUPA CONVERSIE----------------------------------------" << endl;
-	//dezalocare(lista);
-	Avion* vector = conversieListaVector(lista,&nrElementeListta);
-	for (int i = 0; i < nrElementeListta; i++) {
+	
+	Avion* vector = conversieListaVector(lista,&nrElementeLista);
+	for (int i = 0; i < nrElementeLista; i++) {
 		afisareAvion(vector[i]);
 	}
-
+	dezalocare(lista);
 }
