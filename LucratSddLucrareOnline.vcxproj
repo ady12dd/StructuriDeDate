@@ -151,7 +151,9 @@
     <ClCompile Include="HashTable-Chaining.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="HEAP.cpp" />
+    <ClCompile Include="HEAP.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="listaCircularaCuConversieSiCautare.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -167,6 +169,7 @@
     <ClCompile Include="Liste1058sem2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ListeSimple08.04.2021.cpp" />
     <ClCompile Include="LucratCiureaVideoId.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -181,6 +184,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="avioane.txt" />
     <Text Include="fisier.txt" />
     <Text Include="fisier2.txt" />
     <Text Include="Text.txt" />

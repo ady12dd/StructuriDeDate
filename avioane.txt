@@ -1,0 +1,6 @@
+5
+Boeing 4 15 1
+Airbus 5 16 0
+BMW 6 300 0
+Cargo 3 0 0
+Adi 2 99 0

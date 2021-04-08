@@ -57,6 +57,9 @@
     <ClCompile Include="HEAP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListeSimple08.04.2021.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt">
@@ -69,6 +72,9 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="fisier2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="avioane.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
