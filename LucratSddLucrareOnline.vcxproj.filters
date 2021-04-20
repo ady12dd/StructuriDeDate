@@ -60,6 +60,18 @@
     <ClCompile Include="ListeSimple08.04.2021.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="listaDubla.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stiva.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Coada.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaDeListe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt">
@@ -75,6 +87,15 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="avioane.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="masini.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="apartamente.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="scoli.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

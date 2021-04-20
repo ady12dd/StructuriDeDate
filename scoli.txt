@@ -1,0 +1,5 @@
+4
+Informatica 20
+Matematica 24
+Istorie 30
+Geografie 40

@@ -1,0 +1,6 @@
+5
+3 Duplex 45000
+2 Duplex 50000
+1 Garsoniera 35000
+5 PenthHouse 120000
+6 VilaCuEtaj 500000
